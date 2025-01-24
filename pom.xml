@@ -553,7 +553,13 @@
         <artifactId>guava</artifactId>
         <version>${guava.version}</version>
         <scope>provided</scope>
-      </dependency>
+    </dependency>
+      <dependency>
+         <groupId>com.google.guava</groupId>
+         <artifactId>failureaccess</artifactId>
+         <version>${guava.failureaccess.version}</version>
+         <scope>compile</scope>
+     </dependency>
       <dependency>
         <groupId>org.jpmml</groupId>
         <artifactId>pmml-model</artifactId>
@@ -3351,6 +3357,10 @@
             <relocation>
               <pattern>com.google.common</pattern>
               <shadedPattern>${spark.shade.packageName}.guava</shadedPattern>
+          </relocation>
+           <relocation>
+               <pattern>com.google.thirdparty.publicsuffix</pattern>
+               <shadedPattern>${spark.shade.packageName}.thirdparty.publicsuffix</shadedPattern>
             </relocation>
             <relocation>
               <pattern>org.dmg.pmml</pattern>
