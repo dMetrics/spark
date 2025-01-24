@@ -37,6 +37,12 @@ More detailed documentation is available from the project site, at
 
 For general development tips, including info on developing Spark using an IDE, see ["Useful Developer Tools"](https://spark.apache.org/developer-tools.html).
 
+
+## Building Spark with ability to mitigate know vulnerabilies 
+```bash
+./dev/make-distribution.sh --name without-hadoop --tgz -Pkubernetes -Phadoop-provided -Djetty.version=9.4.57.v20241219 -Dguava.version=32.1.1-jre -Dnetty.version=4.1.115.Final
+```
+
 ## Interactive Scala Shell
 
 The easiest way to start using Spark is through the Scala shell:
