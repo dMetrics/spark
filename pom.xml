@@ -222,6 +222,7 @@
     <bouncycastle.version>1.77</bouncycastle.version>
     <tink.version>1.9.0</tink.version>
     <netty.version>4.1.125.Final</netty.version>
+    <aircompressor.version>2.0.3</aircompressor.version>
     <!--
     If you are changing Arrow version specification, please check
     ./python/pyspark/sql/pandas/utils.py, and ./python/setup.py too.
@@ -2612,7 +2613,7 @@
       <dependency>
         <groupId>io.airlift</groupId>
         <artifactId>aircompressor</artifactId>
-        <version>0.27</version>
+        <version>${aircompressor.version}</version>
       </dependency>
       <dependency>
         <groupId>org.apache.orc</groupId>
