@@ -112,7 +112,7 @@
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-    <java.version>1.8</java.version>
+    <java.version>11</java.version>
     <maven.compiler.source>${java.version}</maven.compiler.source>
     <maven.compiler.target>${java.version}</maven.compiler.target>
     <maven.version>3.9.6</maven.version>
@@ -143,7 +143,7 @@
     <parquet.version>1.13.1</parquet.version>
     <orc.version>1.9.5</orc.version>
     <orc.classifier>shaded-protobuf</orc.classifier>
-    <jetty.version>9.4.56.v20240826</jetty.version>
+    <jetty.version>9.4.58.v20250814</jetty.version>
     <jakartaservlet.version>4.0.3</jakartaservlet.version>
     <chill.version>0.10.0</chill.version>
     <!--
@@ -195,11 +195,11 @@
     <!-- org.apache.commons/commons-lang/-->
     <commons-lang2.version>2.6</commons-lang2.version>
     <!-- org.apache.commons/commons-lang3/-->
-    <commons-lang3.version>3.12.0</commons-lang3.version>
+    <commons-lang3.version>3.19.0</commons-lang3.version>
     <!-- org.apache.commons/commons-pool2/-->
     <commons-pool2.version>2.11.1</commons-pool2.version>
     <datanucleus-core.version>4.1.17</datanucleus-core.version>
-    <guava.version>14.0.1</guava.version>
+    <guava.version>32.1.1-jre</guava.version>
     <janino.version>3.1.9</janino.version>
     <!--
       Please don't upgrade the version to 3.0.0+,
@@ -221,7 +221,8 @@
     <commons-cli.version>1.5.0</commons-cli.version>
     <bouncycastle.version>1.77</bouncycastle.version>
     <tink.version>1.9.0</tink.version>
-    <netty.version>4.1.96.Final</netty.version>
+    <netty.version>4.1.125.Final</netty.version>
+    <aircompressor.version>2.0.3</aircompressor.version>
     <!--
     If you are changing Arrow version specification, please check
     ./python/pyspark/sql/pandas/utils.py, and ./python/setup.py too.
@@ -231,8 +232,8 @@
 
     <!-- org.fusesource.leveldbjni will be used except on arm64 platform. -->
     <leveldbjni.group>org.fusesource.leveldbjni</leveldbjni.group>
-    <kubernetes-client.version>6.7.2</kubernetes-client.version>
-    <okio.version>1.17.6</okio.version>
+    <kubernetes-client.version>7.4.0</kubernetes-client.version>
+    <okio.version>3.6.0</okio.version>
 
     <test.java.home>${java.home}</test.java.home>
 
@@ -288,7 +289,7 @@
     <spark.test.docker.removePulledImage>true</spark.test.docker.removePulledImage>
 
     <!-- Version used in Connect -->
-    <connect.guava.version>32.0.1-jre</connect.guava.version>
+    <connect.guava.version>32.1.1-jre</connect.guava.version>
     <guava.failureaccess.version>1.0.1</guava.failureaccess.version>
     <io.grpc.version>1.56.0</io.grpc.version>
     <mima.version>1.1.2</mima.version>
@@ -809,9 +810,9 @@
         <version>${snappy.version}</version>
       </dependency>
       <dependency>
-        <groupId>org.lz4</groupId>
+        <groupId>at.yawk.lz4</groupId>
         <artifactId>lz4-java</artifactId>
-        <version>1.8.0</version>
+        <version>1.10.1</version>
       </dependency>
       <dependency>
         <groupId>com.github.luben</groupId>
@@ -2608,7 +2609,7 @@
       <dependency>
         <groupId>io.airlift</groupId>
         <artifactId>aircompressor</artifactId>
-        <version>0.27</version>
+        <version>${aircompressor.version}</version>
       </dependency>
       <dependency>
         <groupId>org.apache.orc</groupId>
