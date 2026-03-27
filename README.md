@@ -40,7 +40,40 @@ For general development tips, including info on developing Spark using an IDE, s
 
 ## Building Spark with ability to mitigate know vulnerabilies 
 ```bash
-./dev/make-distribution.sh --name without-hadoop --tgz -Pkubernetes -Phadoop-provided -Djetty.version=9.4.57.v20241219 -Dguava.version=32.1.1-jre -Dnetty.version=4.1.115.Final
+printenv
+export NEXUS_URL=""
+export NEXUS_CREDENTIALS=""
+export SPARK_VERSION=$(echo ${GIT_BRANCH#*-} | cut -d'-' -f1)
+
+git diff
+./dev/make-distribution.sh \
+    --name without-hadoop \
+    --tgz \
+    -Pkubernetes \
+    -Phadoop-provided \
+    -Djava.version=11 \
+    -Djackson-bom.version=2.18.6 \
+    -Dfasterxml.jackson.version=2.18.6 \
+    -Dfasterxml.jackson.databind.version=2.18.6 \
+    -Dlog4j.version=2.25.3 \
+    -Djetty.version=9.4.58.v20250814 \
+    -Dcommons-lang3.version=3.19.0 \
+    -Dcommons-compress.version=1.26.1 \
+    -Davro.version=1.11.5 \
+    -Dokio.version=3.6.0 \
+    -Divy.version=2.5.2 \
+    -Dkubernetes-client.version=7.5.2 \
+    -Dguava.version=32.1.1-jre \
+    -Dnetty.version=4.1.130.Final
+    
+curl --insecure --fail -u ${NEXUS_CREDENTIALS} --upload-file spark-${SPARK_VERSION}-bin-without-hadoop.tgz "$NEXUS_URL/repository/dmetrics-raw/spark-${SPARK_VERSION}-bin-without-hadoop.tgz"
+
+mkdir -p ./spark-${SPARK_VERSION}-bin-without-hadoop
+tar -xzf spark-${SPARK_VERSION}-bin-without-hadoop.tgz -C ./spark-${SPARK_VERSION}-bin-without-hadoop --strip-components=1
+ls -la ./spark-${SPARK_VERSION}-bin-without-hadoop/jars
+
+curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b ~/.local/bin latest
+~/.local/bin/trivy -d --db-repository public.ecr.aws/aquasecurity/trivy-db --java-db-repository public.ecr.aws/aquasecurity/trivy-java-db --cache-dir ${PWD}/.trivy-cache rootfs --scanners vuln ./spark-${SPARK_VERSION}-bin-without-hadoop/jars
 ```
 
 ## Interactive Scala Shell
