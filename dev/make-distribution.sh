@@ -202,21 +202,22 @@ if [ -d "$SPARK_HOME"/resource-managers/kubernetes/core/target/ ]; then
   cp -a "$SPARK_HOME"/resource-managers/kubernetes/integration-tests/tests "$DISTDIR/kubernetes/"
 fi
 
-# Copy examples and dependencies
-mkdir -p "$DISTDIR/examples/jars"
-cp "$SPARK_HOME"/examples/target/scala*/jars/* "$DISTDIR/examples/jars"
-
-# Deduplicate jars that have already been packaged as part of the main Spark dependencies.
-for f in "$DISTDIR"/examples/jars/*; do
-  name=$(basename "$f")
-  if [ -f "$DISTDIR/jars/$name" ]; then
-    rm "$DISTDIR/examples/jars/$name"
-  fi
-done
-
-# Copy example sources (needed for python and SQL)
-mkdir -p "$DISTDIR/examples/src/main"
-cp -r "$SPARK_HOME/examples/src/main" "$DISTDIR/examples/src/"
+### vulnerability fix: org.apache.hive:hive-llap-common	CVE-2024-23953	MEDIUM	2.3.9	-> 4.0.0
+## Copy examples and dependencies
+#mkdir -p "$DISTDIR/examples/jars"
+#cp "$SPARK_HOME"/examples/target/scala*/jars/* "$DISTDIR/examples/jars"
+#
+## Deduplicate jars that have already been packaged as part of the main Spark dependencies.
+#for f in "$DISTDIR"/examples/jars/*; do
+#  name=$(basename "$f")
+#  if [ -f "$DISTDIR/jars/$name" ]; then
+#    rm "$DISTDIR/examples/jars/$name"
+#  fi
+#done
+#
+## Copy example sources (needed for python and SQL)
+#mkdir -p "$DISTDIR/examples/src/main"
+#cp -r "$SPARK_HOME/examples/src/main" "$DISTDIR/examples/src/"
 
 # Copy license and ASF files
 if [ -e "$SPARK_HOME/LICENSE-binary" ]; then

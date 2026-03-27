@@ -64,7 +64,7 @@ git diff
     -Divy.version=2.5.2 \
     -Dkubernetes-client.version=7.5.2 \
     -Dguava.version=32.1.1-jre \
-    -Dnetty.version=4.1.130.Final
+    -Dnetty.version=4.1.132.Final
     
 curl --insecure --fail -u ${NEXUS_CREDENTIALS} --upload-file spark-${SPARK_VERSION}-bin-without-hadoop.tgz "$NEXUS_URL/repository/dmetrics-raw/spark-${SPARK_VERSION}-bin-without-hadoop.tgz"
 
