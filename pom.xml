@@ -857,10 +857,6 @@
         <exclusions>
           <exclusion>
             <groupId>io.netty</groupId>
-            <artifactId>netty-codec-dns</artifactId>
-          </exclusion>
-          <exclusion>
-            <groupId>io.netty</groupId>
             <artifactId>netty-codec-haproxy</artifactId>
           </exclusion>
           <exclusion>
