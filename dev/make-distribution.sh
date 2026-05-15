@@ -126,6 +126,17 @@ if [ ! "$(command -v "$MVN")" ] ; then
     exit -1;
 fi
 
+echo "Maven binary: $MVN" >&2
+
+echo "=== Maven version ===" >&2
+"$MVN" -version >&2
+
+echo "=== Project version raw ===" >&2
+"$MVN" -q help:evaluate \
+  -Dexpression=project.version \
+  -DforceStdout \
+  "$@" >&2
+
 VERSION=$("$MVN" help:evaluate -Dexpression=project.version $@ \
     | grep -v "INFO"\
     | grep -v "WARNING"\
