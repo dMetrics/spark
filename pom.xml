@@ -221,7 +221,8 @@
     <commons-cli.version>1.5.0</commons-cli.version>
     <bouncycastle.version>1.77</bouncycastle.version>
     <tink.version>1.9.0</tink.version>
-    <netty.version>4.1.132.Final</netty.version>
+    <netty.version>4.1.136.Final</netty.version>
+    <lz4-java.version>1.11.1</lz4-java.version>
     <aircompressor.version>2.0.3</aircompressor.version>
     <!--
     If you are changing Arrow version specification, please check
@@ -813,7 +814,7 @@
       <dependency>
         <groupId>at.yawk.lz4</groupId>
         <artifactId>lz4-java</artifactId>
-        <version>1.10.1</version>
+        <version>${lz4-java.version}</version>
       </dependency>
       <dependency>
         <groupId>com.github.luben</groupId>
